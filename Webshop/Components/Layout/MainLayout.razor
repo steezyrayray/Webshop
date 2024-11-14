@@ -1,0 +1,18 @@
+﻿@using Webshop.Models
+@inherits LayoutComponentBase
+
+<Toast />
+<NavMenu />
+<main class="responsive">
+    @Body
+</main>
+
+@code {
+    private void RedirectToHome() => NavigationManager.NavigateTo("/home");
+
+    private async void LogOut()
+    {
+        await JS.InvokeAsync<string>("deleteUserId");
+        NavigationManager.NavigateTo("/login");
+    }
+}

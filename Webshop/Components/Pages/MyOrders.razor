@@ -1,0 +1,174 @@
+﻿@page "/my-orders"
+@using System.Globalization
+@using Webshop.Models
+@using iTextSharp.text
+@using iTextSharp.text.pdf
+@rendermode InteractiveServer
+
+<h3>Meine Bestellungen:</h3>
+
+<table class="medium-space">
+    <thead>
+        <tr>
+            <th>Bestellung</th>
+            <th>Artikel</th>
+            <th>Menge</th>
+            <th>Preis</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ordersWithArticles in AllMyOrdersWithArticles)
+        {
+            <tr>
+                <td colspan="4" style="font-weight: bold; padding-top: 10px;">
+                    <!-- Display order-specific information here -->
+                    Bestellungsnummer: @ordersWithArticles.Key.Id.ToString("D7")<br />
+                    Bestelldatum: @ordersWithArticles.Key.Created.ToString("dd.MM.yyyy")
+                </td>
+                <td>
+                    <button @onclick="() => GenerateInvoicePdf(ordersWithArticles)">PDF <i>download</i></button>
+                </td>
+            </tr>
+
+            <!-- Iterate through articles in this order -->
+            @foreach (var article in ordersWithArticles.Value)
+            {
+                var articleOrder = ArticleOrders.FirstOrDefault(ao => ao.ArticleId == article.Id && ao.OrderId == ordersWithArticles.Key.Id);
+
+                <tr>
+                    <td></td>
+                    <td>@article.Title</td>
+                    <td>@articleOrder.Quantity</td>
+                    <td>@string.Format(new CultureInfo("de-DE"), "{0:C}", articleOrder.Quantity * articleOrder.Price)</td>
+                    <td></td>
+                </tr>
+            }
+
+            <!-- Add a blank row for spacing between orders -->
+            <tr><td colspan="5" style="padding: 10px;"><hr /></td></tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private int UserId;
+    private string Username;
+    private List<Order> AllMyOrders = new();
+    private Dictionary<Order, List<Article>> AllMyOrdersWithArticles = new();
+    private List<ArticleOrder> ArticleOrders = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            Username = db.User.Find(UserId).Name;
+            ArticleOrders = db.ArticleOrder.ToList();
+            AllMyOrders = db.Order.Where(o => o.UserId == UserId).ToList();
+            foreach(Order order in AllMyOrders)
+            {
+                List<int> articleIds = db.ArticleOrder.Where(ao => ao.OrderId == order.Id).Select(ao => ao.ArticleId).ToList();
+                List<Article> articles = new();
+                foreach (int id in articleIds)
+                {
+                    articles.Add(await db.Article.FindAsync(id));
+                }
+                AllMyOrdersWithArticles.Add(order, articles);
+            }
+            StateHasChanged();
+        }
+    }
+
+    private async Task GenerateInvoicePdf(KeyValuePair<Order, List<Article>> orderWithArticles)
+    {
+        var euroCulture = new CultureInfo("de-DE");
+
+        using (var memoryStream = new MemoryStream())
+        {
+            var doc = new iTextSharp.text.Document();
+            PdfWriter.GetInstance(doc, memoryStream);
+            doc.Open();
+
+            // Invoice Header
+            doc.Add(new Paragraph("RECHNUNG"));
+            doc.Add(new Paragraph($"Bestellungsnummer: {orderWithArticles.Key.Id.ToString("D7")}"));
+            doc.Add(new Paragraph($"Bestelldatum: {orderWithArticles.Key.Created:dd.MM.yyyy}"));
+            doc.Add(new Paragraph($"Kundennummer: {UserId.ToString("D7")}"));
+            doc.Add(new Paragraph("\n"));
+
+            // Customer and Seller Information
+            doc.Add(new Paragraph("Verkäufer: Webshop"));
+            doc.Add(new Paragraph("Addresse: Webshopstraße 1"));
+            doc.Add(new Paragraph("Email: webshop@example.com"));
+            doc.Add(new Paragraph("\n"));
+            double sum = 0;
+            using (var db = new WebshopContext())
+            {
+                Address address = db.Address.Find(orderWithArticles.Key.AddressId);
+                doc.Add(new Paragraph($"Kunde: {address.Recipient}"));
+                doc.Add(new Paragraph($"Addresse: {address.AddressLine}"));
+                doc.Add(new Paragraph("Email: kunde@gmail.com"));
+                doc.Add(new Paragraph("\n"));
+
+                // Invoice Table
+                var table = new PdfPTable(5) { WidthPercentage = 100 };
+                table.AddCell(CreatePaddedCell("Artikelname"));
+                table.AddCell(CreatePaddedCell("Menge"));
+                table.AddCell(CreatePaddedCell("Einzelpreis (ohne MwSt.)"));
+                table.AddCell(CreatePaddedCell("MwSt. (19%)"));
+                table.AddCell(CreatePaddedCell("Gesamtpreis (inkl. MwSt.)"));
+
+                foreach(Article article in orderWithArticles.Value)
+                {
+                    var articleOrder = db.ArticleOrder.Where(ao => ao.ArticleId == article.Id && ao.OrderId == orderWithArticles.Key.Id).FirstOrDefault();
+
+                    double totalPrice = articleOrder.Quantity * articleOrder.Price;
+                    double preTaxPrice = totalPrice / 1.19;
+                    double taxAmount = totalPrice - preTaxPrice;
+                    sum += totalPrice;
+                    table.AddCell(CreatePaddedCell(article.Title));
+                    table.AddCell(CreatePaddedCell(articleOrder.Quantity.ToString()));
+                    table.AddCell(CreatePaddedCell(preTaxPrice.ToString("C", euroCulture)));
+                    table.AddCell(CreatePaddedCell(taxAmount.ToString("C", euroCulture)));
+                    table.AddCell(CreatePaddedCell(totalPrice.ToString("C", euroCulture)));
+                }
+                table.AddCell(CreatePaddedCell(""));
+                table.AddCell(CreatePaddedCell(""));
+                table.AddCell(CreatePaddedCell(""));
+                table.AddCell(CreatePaddedCell("Summe:"));
+                table.AddCell(CreatePaddedCell(sum.ToString("C", euroCulture)));
+                doc.Add(table);
+            }
+
+
+            // Footer
+            doc.Add(new Paragraph("Danke für Ihren Einkauf!"));
+            doc.Close();
+
+            // Convert the PDF to a base64 string
+            var pdfBytes = memoryStream.ToArray();
+            var base64Pdf = Convert.ToBase64String(pdfBytes);
+
+            // Trigger JavaScript to download the PDF
+            await JS.InvokeVoidAsync("downloadPdf", base64Pdf, $"Rechnung_Bestellung{orderWithArticles.Key.Id}.pdf");
+        }
+    }
+
+    private PdfPCell CreatePaddedCell(string text)
+    {
+        var cell = new PdfPCell(new Phrase(text));
+        cell.Padding = 5f; // Adjust padding as needed
+        return cell;
+    }
+
+}
+

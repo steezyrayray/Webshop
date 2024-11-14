@@ -1,0 +1,116 @@
+﻿@page "/my-addresses"
+@using Webshop.Models
+@using Webshop.Services
+@inject ToastService ToastService
+@rendermode InteractiveServer
+
+<h3>Meine Adressen</h3>
+
+<table class="address-table">
+    <thead>
+        <tr>
+            <th>Empfänger</th>
+            <th>Adresse</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Display existing addresses -->
+        @foreach (var address in AllMyAddresses)
+        {
+            <tr>
+                <td>@address.Recipient</td>
+                <td>@address.AddressLine</td>
+                <td>
+                    <button @onclick="() => DeleteAddress(address.Id)"><i>delete</i></button>
+                </td>
+            </tr>
+        }
+
+        <!-- Input row for adding a new address -->
+        <tr>
+            <td>
+                <input type="text" placeholder="Empfänger" @bind="NewRecipient" />
+            </td>
+            <td>
+                <input type="text" placeholder="Adresse" @bind="NewAddressLine" />
+            </td>
+            <td>
+                <button class="save-button" @onclick="AddAddress"><i>check</i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    private List<Address> AllMyAddresses = new();
+    private string NewRecipient { get; set; }
+    private string NewAddressLine { get; set; }
+    private int UserId; // Assume this is set from logged-in user context
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            AllMyAddresses = db.Address.Where(a => a.UserId == UserId).ToList();
+            StateHasChanged();
+        }
+    }
+
+    private async Task AddAddress()
+    {
+        if (!string.IsNullOrWhiteSpace(NewRecipient) && !string.IsNullOrWhiteSpace(NewAddressLine))
+        {
+            using (var db = new WebshopContext())
+            {
+                var newAddress = new Address
+                    {
+                        UserId = UserId,
+                        Recipient = NewRecipient,
+                        AddressLine = NewAddressLine
+                    };
+                db.Address.Add(newAddress);
+                await db.SaveChangesAsync();
+                AllMyAddresses.Add(newAddress);
+                NewRecipient = string.Empty;
+                NewAddressLine = string.Empty;
+                StateHasChanged();
+            }
+            ToastService.ShowSuccess("Adresse erfolgreich hinzugefügt!");
+        }
+        else ToastService.ShowError("Bitte beide Felder befüllen!");
+    }
+
+    private async Task DeleteAddress(int addressId)
+    {
+        using (var db = new WebshopContext())
+        {
+            var address = AllMyAddresses.FirstOrDefault(a => a.Id == addressId);
+            if (address != null)
+            {
+                db.Address.Remove(address);
+                await db.SaveChangesAsync();
+
+                AllMyAddresses.Remove(address); // Update the list to refresh the UI
+            }
+            StateHasChanged();
+        }
+        
+    }
+
+    private async Task<int> GetUserIdAsync()
+    {
+        // Placeholder function for fetching user ID
+        return UserId = await GetUserIdAsync(); // Fetch logged-in user’s ID
+    }
+}

@@ -1,0 +1,58 @@
+﻿@using Webshop.Models
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
+
+<nav class="left drawer navbar">
+    <a href="/home">
+        <i>home</i>
+        <div>Home</div>
+    </a>
+    @if(!IsAdmin)
+    {
+        <a href="/shopping-cart">
+            <i>shopping_cart</i>
+            <div>Mein Einkaufswagen</div>
+        </a>
+    
+        <a href="/my-orders">
+            <i>receipt</i>
+            <div>Meine Bestellungen</div>
+        </a>
+
+        <a href="/my-addresses">
+            <i>house</i>
+            <div>Meine Adressen</div>
+        </a>
+    }
+    @if (IsAdmin)
+    {
+        <a href="/orders">
+            <i>receipt</i>
+            <div>Alle Bestellungen</div>
+        </a>
+   
+        <a href="/users">
+            <i>group</i>
+            <div>Benutzerverwaltung</div>
+        </a>
+    }
+
+    <a href="/logout">
+        <i>logout</i>
+        <div>Ausloggen</div>
+    </a>
+</nav>
+
+@code {
+    private int UserId;
+    private bool IsAdmin;
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+        using (var db = new WebshopContext())
+        {
+            IsAdmin = db.User.Find(UserId).IsAdmin;
+            StateHasChanged();
+        }
+    }
+}

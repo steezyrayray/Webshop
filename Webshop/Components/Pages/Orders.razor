@@ -1,0 +1,73 @@
+﻿@page "/orders"
+@using Webshop.Models
+@rendermode InteractiveServer
+
+<h3>All Orders</h3>
+
+<table class="medium-space">
+    <thead>
+        <tr>
+            <th>Artikelname</th>
+            <th>Käufer</th>
+            <th>Menge</th>
+            <th>Umsatz</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in AllOrders)
+        {
+            var user = AllUsers.FirstOrDefault(u => u.Id == order.UserId);
+
+            <!-- Iterate through each article in the order -->
+            @foreach (var articleOrder in AllArticleOrders.Where(ao => ao.OrderId == order.Id))
+            {
+                var article = AllArticles.FirstOrDefault(a => a.Id == articleOrder.ArticleId);
+
+                <tr>
+                    <td>@article?.Title</td>
+                    <td>@user?.Name</td>
+                    <td>@articleOrder.Quantity</td>
+                    <td>@string.Format(new System.Globalization.CultureInfo("de-DE"), "{0:C}", articleOrder.Quantity * articleOrder.Price)</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    private int UserId;
+    private List<Order> AllOrders = new();
+    private List<User> AllUsers = new();
+    private List<Article> AllArticles = new();
+    private List<ArticleOrder> AllArticleOrders = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            // Check if user is admin
+            if (!db.User.Find(UserId).IsAdmin)
+            {
+                NavigationManager.NavigateTo("/home");
+                return;
+            }
+
+            // Load all required data
+            AllOrders = db.Order.OrderBy(o => o.Created).ToList();
+            AllUsers = db.User.ToList();
+            AllArticles = db.Article.ToList();
+            AllArticleOrders = db.ArticleOrder.ToList();
+
+            StateHasChanged();
+        }
+    }
+}

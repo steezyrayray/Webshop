@@ -1,0 +1,223 @@
+﻿@page "/add-article"
+@using Webshop.Components.Layout
+@using Webshop.Models
+@using Webshop.Services
+@layout MainLayout
+@rendermode InteractiveServer
+@inject ToastService ToastService
+
+<div class="create-article">
+    <h1 class="my">Artikel hinzufügen</h1>
+
+    <div class="my field border round" style="margin-bottom: 20px;margin-top: 20px;">
+        <input type="text" @bind="Name">
+        <span class="helper">Name</span>
+    </div>
+    @if (!string.IsNullOrEmpty(ValidationError.Name))
+    {
+        <p class="my red error-message">@ValidationError.Name</p>
+    }
+
+    <div class="my field border round" style="margin-bottom: 20px;margin-top: 20px;">
+        <input type="text" @bind="Beschreibung">
+        <span class="helper">Beschreibung</span>
+    </div>
+    @if (!string.IsNullOrEmpty(ValidationError.Beschreibung))
+    {
+        <p class="my red error-message">@ValidationError.Beschreibung</p>
+    }
+
+    <div class="field border round" style="margin-bottom: 20px;margin-top: 20px;">
+        <input type="text" @bind="Preis">
+        <span class="helper">Preis</span>
+    </div>
+    @if (!string.IsNullOrEmpty(ValidationError.Preis))
+    {
+        <p class="my red error-message">@ValidationError.Preis</p>
+    }
+
+    <div class="field border round" style="margin-bottom: 20px;margin-top: 20px;">
+        <input type="text" @bind="Menge">
+        <span class="helper">Menge</span>
+    </div>
+    @if (!string.IsNullOrEmpty(ValidationError.Menge))
+    {
+        <p class="my red error-message">@ValidationError.Menge</p>
+    }
+
+    <div class="field border round" style="margin-bottom: 20px;">
+        <label class="button primary">
+            <span>Bild hochladen</span>
+            <InputFile OnChange="HandleFileSelected" style="display: none;" accept="image/*" />
+        </label>
+    </div>
+    @if (!string.IsNullOrEmpty(ValidationError.Image))
+    {
+        <p class="my red error-message">@ValidationError.Image</p>
+    }
+
+    <label class="my checkbox" style="margin-bottom: 20px;margin-top: 20px;">
+        <input type="checkbox" @bind="Nochmal">
+        <span>Weiteren Eintrag erstellen</span>
+    </label>
+
+    <button class="primary large-elevate extra" @onclick="TryAddArticle">
+        <span>Eintrag hinzufügen</span>
+        <i>check</i>
+    </button>
+
+    @if (!string.IsNullOrEmpty(GeneralError))
+    {
+        <p class="my red error-message">@GeneralError</p>
+    }
+</div>
+
+@code {
+    private int UserId;
+    private string Name;
+    private string Beschreibung;
+    private string Preis;
+    private string Menge;
+    private byte[] ImageData;
+    private bool Nochmal;
+
+    // Error handling
+    private ValidationErrors ValidationError = new ValidationErrors();
+    private string GeneralError;
+
+    private class ValidationErrors
+    {
+        public string Name { get; set; }
+        public string Beschreibung { get; set; }
+        public string Preis { get; set; }
+        public string Menge { get; set; }
+        public string Image { get; set; }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+
+            using (var db = new WebshopContext())
+            {
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task TryAddArticle()
+    {
+        ClearErrors(); // Reset error messages
+
+        if (!ValidateForm())
+        {
+            return; // Stop execution if validation fails
+        }
+
+        try
+        {
+            using (var db = new WebshopContext())
+            {
+                var preisValue = Convert.ToDouble(Preis.Replace(',', '.'));
+
+                Article article = new Article
+                {
+                    Title = Name,
+                    Description = Beschreibung,
+                    Price = preisValue,
+                    Image = ImageData ?? new byte[0], // Set image data if available
+                    Quantity = Convert.ToInt32(Menge),
+                    IsDeleted = false
+                };
+
+                db.Article.Add(article);
+                await db.SaveChangesAsync();
+                ToastService.ShowSuccess("Artikel erfolgreich hinzugefügt!");
+
+                if (Nochmal)
+                {
+                    ClearForm();
+                }
+                else
+                {
+                    RedirectToHome();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            GeneralError = "Es ist ein Fehler aufgetreten: " + ex.Message;
+            ToastService.ShowError("Fehler beim Erstellen des Artikels.");
+        }
+    }
+
+    private bool ValidateForm()
+    {
+        bool isValid = true;
+
+        if (string.IsNullOrWhiteSpace(Name))
+        {
+            ValidationError.Name = "Name darf nicht leer sein.";
+            isValid = false;
+        }
+
+        if (string.IsNullOrWhiteSpace(Beschreibung))
+        {
+            ValidationError.Beschreibung = "Beschreibung darf nicht leer sein.";
+            isValid = false;
+        }
+
+        if (string.IsNullOrWhiteSpace(Preis) || !double.TryParse(Preis.Replace(',', '.'), out _))
+        {
+            ValidationError.Preis = "Preis ist ungültig oder leer.";
+            isValid = false;
+        }
+
+        if (string.IsNullOrWhiteSpace(Menge) || !Int32.TryParse(Menge.Replace(',', '.'), out _))
+        {
+            ValidationError.Menge = "Menge ist ungültig oder leer.";
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    private void ClearErrors()
+    {
+        ValidationError = new ValidationErrors(); // Reset error messages
+        GeneralError = string.Empty;
+    }
+
+    private void ClearForm()
+    {
+        Name = string.Empty;
+        Beschreibung = string.Empty;
+        Preis = string.Empty;
+        Menge = string.Empty;
+        ImageData = null;
+        StateHasChanged();
+    }
+
+    private void RedirectToHome() => NavigationManager.NavigateTo("/home");
+    
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+            if (file != null)
+            {
+                using var stream = new MemoryStream();
+                await file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(stream); // Limit to 10 MB
+                ImageData = stream.ToArray();
+            }
+        }
+        catch (Exception ex)
+        {
+            ValidationError.Image = "Bild konnte nicht geladen werden: " + ex.Message;
+        }
+    }
+}

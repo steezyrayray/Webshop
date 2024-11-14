@@ -1,0 +1,167 @@
+﻿@page "/shopping-cart"
+@using Microsoft.EntityFrameworkCore
+@using Webshop.Components.Layout
+@using Webshop.Models
+@using Webshop.Services
+@inject ToastService ToastService
+@rendermode InteractiveServer
+@layout MainLayout
+
+<h3>Mein Einkaufswagen</h3>
+
+<div class="shopping-cart">
+    @if (ShoppingCart.Count > 0)
+    {
+        @foreach (ShoppingCart shoppingCartItem in ShoppingCart)
+        {
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    @if (Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Image != null && Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Image.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Image)" alt="@Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Title" />
+                    }
+                    else
+                    {
+                        <div class="placeholder-image">Kein Bild</div>
+                    }
+                </div>
+                <div class="item-info">
+                    <h4>@Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Title</h4>
+                    <p>@Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Description</p>
+                    <p>Preis: @string.Format(new System.Globalization.CultureInfo("de-DE"), "{0:C}", @Articles.Find(a => a.Id == shoppingCartItem.ArticleId).Price)</p>
+                </div>
+                <div class="quantity">
+                    <label>Menge:</label>
+                    <input type="number" min="1" @bind="shoppingCartItem.Quantity" @bind:event="oninput" />
+                </div>
+                <button class="remove-button" @onclick="() => RemoveFromCart(shoppingCartItem.Id)">Entfernen</button>
+            </div>
+        }
+
+        <div class="order-section">
+            <select id="addressDropdown" @bind="SelectedAddressId">
+                <option value="">Wählen Sie eine Adresse</option>
+                @foreach (var address in MyAddresses)
+                {
+                    <option value="@address.Id">@address.Recipient, @address.AddressLine</option>
+                }
+            </select>
+
+            <button class="order-button" @onclick="PlaceOrder">Bestellen</button>
+        </div>
+    }
+    else
+    {
+        <p>Your shopping cart is empty.</p>
+    }
+</div>
+
+<Toast @ref="toast" />
+
+@code {
+    private int UserId;
+    private List<ShoppingCart> ShoppingCart = new();
+    private List<Article> Articles = new();
+    private List<Address> MyAddresses = new();
+    private int? SelectedAddressId; // Holds the selected address ID
+    private Toast toast;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            MyAddresses = db.Address.Where(a => a.UserId == UserId).ToList();
+            ShoppingCart = db.ShoppingCart.Where(sc => sc.UserId == UserId).ToList();
+            List<int> articleIds = ShoppingCart.Select(sc => sc.ArticleId).ToList();
+            Articles = db.Article.Where(a => articleIds.Contains(a.Id)).AsNoTracking().ToList();
+
+            if (MyAddresses.Any())
+            {
+                SelectedAddressId = MyAddresses.First().Id;
+            }
+            else
+            {
+                if(ShoppingCart.Any()) ToastService.ShowError("Sie müssen vor dem Bestellen eine Adresse unter 'Meine Adressen' hinzufügen!");
+            }
+            StateHasChanged();
+        }
+    }
+
+    private async Task PlaceOrder()
+    {
+        if (SelectedAddressId == null)
+        {
+            ToastService.ShowError("Bitte wählen Sie eine Versandadresse aus.");
+            return;
+        }
+
+        using (var db = new WebshopContext())
+        {
+            Order order = new Order
+                {
+                    UserId = UserId,
+                    AddressId = SelectedAddressId.Value, // Use the selected address ID
+                    Created = DateTime.Now
+                };
+
+            await db.Order.AddAsync(order);
+            await db.SaveChangesAsync();
+
+            foreach (ShoppingCart shoppingCartItem in ShoppingCart)
+            {
+                Article article = db.Article.Find(shoppingCartItem.ArticleId);
+                if (shoppingCartItem.Quantity > article.Quantity)
+                {
+                    ToastService.ShowError($"Nur mehr {article.Quantity} Stück übrig!");
+                    return;
+                }
+                if (shoppingCartItem.Quantity <= 0)
+                {
+                    ToastService.ShowError("Die Menge muss größer als 0 sein.");
+                    return;
+                }
+
+                ArticleOrder articleOrder = new ArticleOrder
+                    {
+                        ArticleId = article.Id,
+                        OrderId = order.Id,
+                        Price = article.Price,
+                        Quantity = shoppingCartItem.Quantity
+                    };
+                await db.ArticleOrder.AddAsync(articleOrder);
+                article.Quantity -= shoppingCartItem.Quantity;
+                db.ShoppingCart.Remove(shoppingCartItem);
+            }
+
+            await db.SaveChangesAsync();
+            ToastService.ShowSuccess("Bestellung erfolgreich!");
+            NavigationManager.NavigateTo("/home");
+        }
+
+        Console.WriteLine("Order placed!");
+    }
+
+    private async Task RemoveFromCart(int shoppingCartItemId)
+    {
+        using (var db = new WebshopContext())
+        {
+            var itemToRemove = db.ShoppingCart.Find(shoppingCartItemId);
+            if (itemToRemove != null)
+            {
+                db.ShoppingCart.Remove(itemToRemove);
+                await db.SaveChangesAsync();
+            }
+        }
+
+        await LoadData(); // Refresh the shopping cart list after removal
+    }
+}

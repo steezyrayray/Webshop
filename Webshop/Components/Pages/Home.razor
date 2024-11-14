@@ -1,0 +1,163 @@
+﻿@page "/home"
+@using Webshop.Models
+@using Webshop.Services
+@inject IJSRuntime JS
+@inject ToastService ToastService
+@rendermode InteractiveServer
+
+<div class="home">
+    @if (IsAdmin)
+    {
+        <article class="dashboard small-blur">
+            <div class="statistic">
+                <h3>Bestellungen</h3>
+                <canvas id="chart1" width="300" height="300"></canvas>
+            </div>
+            <div class="statistic">
+                <h3>Inventarübersicht</h3>
+                <canvas id="chart2" width="300" height="300"></canvas>
+            </div>
+        </article>
+    }
+
+    <div class="overview-header">
+        <h2>Alle Artikel:</h2>
+        @if (IsAdmin)
+        {
+            <button class="primary large-elevate medium" @onclick="RedirectToAddArticle">
+                <span>Artikel hinzufügen</span>
+                <i>add</i>
+            </button>
+        }
+    </div>
+
+    <div class="article-grid">
+        @foreach (Article article in AllArticles)
+        {
+            <div class="article-card">
+                <div class="card-image">
+                    @if (article.Image != null && article.Image.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(article.Image)" alt="@article.Title" width="100" height="100" />
+                    }
+                    else
+                    {
+                        <div class="placeholder-image">Kein Bild</div>
+                    }
+                </div>
+
+                <div class="card-header" @onclick="() => RedirectToArticle(article.Id)">
+                    <h3 class="title">@article.Title</h3>
+                </div>
+                <p class="description">@article.Description</p>
+                <div class="card-info">
+                    <span class="price">@string.Format(new System.Globalization.CultureInfo("de-DE"), "{0:C}", article.Price)</span>
+                    <span class="quantity">Menge: @article.Quantity</span>
+                </div>
+                <div class="card-actions">
+                    @if (IsAdmin)
+                    {
+                        <button class="icon-button" title="Bearbeiten" @onclick="() => RedirectToEditArticle(article.Id)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button class="icon-button delete" title="Löschen" @onclick="() => DeleteEntry(article.Id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="icon-button" title="In den Einkaufswagen" @onclick="() => AddToShoppingCart(article.Id)">
+                            <i>shopping_cart</i>
+                        </button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    private List<Article> AllArticles = new();
+    private int UserId;
+    private bool IsAdmin;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+            await InitializeCharts();
+        }
+    }
+
+    private void RedirectToAddArticle() => NavigationManager.NavigateTo("/add-article");
+
+    private void RedirectToArticle(int id) => NavigationManager.NavigateTo($"/article/{id}");
+
+    private void RedirectToEditArticle(int id) => NavigationManager.NavigateTo($"/edit-article/{id}");
+
+    private async Task DeleteEntry(int id)
+    {
+        using (var db = new WebshopContext())
+        {
+            var article = db.Article.Find(id);
+            if (article != null)
+            {
+                article.IsDeleted = true;
+                await db.SaveChangesAsync();
+                ToastService.ShowSuccess("Artikel erfolgreich entfernt!");
+            }
+        }
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            IsAdmin = db.User.Find(UserId).IsAdmin;
+            AllArticles = db.Article.Where(a => !a.IsDeleted).OrderByDescending(a => a.Created).ToList();
+            StateHasChanged();
+        }
+    }
+
+    private async Task InitializeCharts()
+    {
+        using (var db = new WebshopContext())
+        {
+            var articleOrderCounts = AllArticles.Select(a =>
+            db.ArticleOrder.Count(o => o.ArticleId == a.Id)).ToArray();
+
+            var inventoryData = AllArticles.Select(a => a.Quantity).ToArray();
+            var articleTitles = AllArticles.Select(a => a.Title).ToArray();
+
+            await JS.InvokeVoidAsync("initializeCharts", articleOrderCounts, inventoryData, articleTitles);
+        }
+    }
+
+    public async Task AddToShoppingCart(int articleId)
+    {
+        using (var db = new WebshopContext())
+        {
+            ShoppingCart existingShoppingCartItem = db.ShoppingCart.Where(sc => sc.UserId == UserId && sc.ArticleId == articleId).FirstOrDefault();
+            if (existingShoppingCartItem == null)
+            {
+                ShoppingCart shoppingCartItem = new ShoppingCart
+                    {
+                        UserId = UserId,
+                        ArticleId = articleId,
+                        Quantity = 1
+                    };
+                db.ShoppingCart.Add(shoppingCartItem);
+            } else
+            {
+                existingShoppingCartItem.Quantity++;
+            }
+
+            await db.SaveChangesAsync();
+            ToastService.ShowSuccess("Erfolgreich zum Einkaufswagen hinzugefügt!");
+        }
+    }
+}

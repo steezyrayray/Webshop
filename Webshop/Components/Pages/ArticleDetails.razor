@@ -1,0 +1,100 @@
+﻿@page "/article/{id:int}"
+@rendermode InteractiveServer
+@using Webshop.Models
+@using Webshop.Services
+@inject ToastService ToastService
+
+<div class="article-details">
+    <div class="image-container">
+        @if (!string.IsNullOrEmpty(ImageBase64))
+        {
+            <img src="data:image/jpeg;base64,@ImageBase64" alt="@Name" class="article-image" />
+        }
+        else
+        {
+            <div class="placeholder-image">Kein Bild verfügbar</div>
+        }
+    </div>
+
+    <div class="details-container">
+        <h1 class="article-title">@Name</h1>
+        <p class="article-description">@Beschreibung</p>
+        <p class="article-price">Preis: <span>@Preis €</span></p>
+        <p class="article-stock">@Menge Stück übrig</p>
+        @if(IsAdmin)
+        {
+            <button class="add-to-cart-button" @onclick="RedirectToEditArticle">Artikel bearbeiten</button>
+        } else
+        {
+            <button class="add-to-cart-button" @onclick="AddToCart">In den Einkaufswagen</button>
+        }
+    </div>
+</div>
+
+<style>
+    
+</style>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private string Name { get; set; }
+    private string Beschreibung { get; set; }
+    private string Preis { get; set; }
+    private string Menge { get; set; }
+    private string ImageBase64 { get; set; }
+    private int UserId;
+    private bool IsAdmin;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            IsAdmin = db.User.Find(UserId).IsAdmin;
+            Article article = db.Article.Find(Id);
+            Name = article.Title;
+            Beschreibung = article.Description;
+            Preis = article.Price.ToString("F2");
+            Menge = article.Quantity.ToString();
+            ImageBase64 = article.Image != null ? Convert.ToBase64String(article.Image) : null;
+            StateHasChanged();
+        }
+    }
+
+    private async Task AddToCart()
+    {
+        using (var db = new WebshopContext())
+        {
+            ShoppingCart existingShoppingCartItem = db.ShoppingCart.Where(sc => sc.UserId == UserId && sc.ArticleId == Id).FirstOrDefault();
+            if (existingShoppingCartItem == null)
+            {
+                ShoppingCart shoppingCartItem = new ShoppingCart
+                    {
+                        UserId = UserId,
+                        ArticleId = Id,
+                        Quantity = 1
+                    };
+                db.ShoppingCart.Add(shoppingCartItem);
+            }
+            else
+            {
+                existingShoppingCartItem.Quantity++;
+            }
+
+            await db.SaveChangesAsync();
+            ToastService.ShowSuccess("Erfolgreich zum Einkaufswagen hinzugefügt!");
+        }
+    }
+
+    private void RedirectToEditArticle() => NavigationManager.NavigateTo($"/edit-article/{Id}");
+    
+}

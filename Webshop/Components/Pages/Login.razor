@@ -1,0 +1,121 @@
+﻿@page "/login"
+@page "/logout"
+@page "/"
+@using Webshop.Components.Layout
+@using Webshop.Models
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.AspNetCore.Http.Extensions;
+@using System.Security.Cryptography
+@using System.Text
+@using Webshop.Services
+@inject ToastService ToastService
+@layout LoginLayout
+@rendermode InteractiveServer
+
+<PageTitle>Login</PageTitle>
+<div class="login">
+    <div class="title-div">
+        <h1 class="title-text">Webshop</h1>
+        <i class="title-logo">shopping_cart</i>
+    </div>
+    <h4>Einloggen</h4>
+    <div class="field border round medium-width">
+        <input type="text" @bind="Benutzername">
+        <span class="helper">Benutzername</span>
+    </div>
+
+    <div class="field border round medium-width">
+        <input type="password" @bind="Passwort">
+        <span class="helper">Passwort</span>
+    </div>
+    
+    <div class="login-button-div">
+        <a class="button secondary large-elevate medium" @onclick="RedirectToRegister">
+            <span>Registrieren</span>
+            <i>edit_square</i>
+        </a>
+        <button class="primary large-elevate large" @onclick="TryLogin">
+            <span>Einloggen</span>
+            <i>login</i>
+        </button>
+    </div>
+</div>
+
+@code {
+    private string Benutzername { get; set; }
+    private string Passwort { get; set; }
+    private bool Valid { get; set; } = true;
+
+    private async void TryLogin()
+    {
+        try
+        {
+            using (var db = new WebshopContext())
+            {
+                User gefundenerBenutzer = db.User.ToList()
+                    .Find(x => x.Name == Benutzername && x.Password == HashPassword(Passwort));
+
+                if (gefundenerBenutzer == null)
+                {
+                    ToastService.ShowError("Kein Benutzer mit diesen Daten gefunden!");
+                }
+                else
+                {
+                    // Call JavaScript to store user ID in localStorage
+                    var userId = gefundenerBenutzer.Id.ToString();
+                    await JS.InvokeVoidAsync("cacheUserId", userId);
+
+                    // Redirect to dashboard or another page
+                    NavigationManager.NavigateTo("/home");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Login failed: {ex.Message}");
+            Valid = false;
+        }
+    }
+
+
+    private void RedirectToRegister()
+    {
+        NavigationManager.NavigateTo("/register");
+    }
+
+    private string UserId;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (NavigationManager.Uri.Contains("logout", StringComparison.OrdinalIgnoreCase))
+            {
+                await JS.InvokeAsync<string>("deleteUserId");
+            }
+            UserId = await JS.InvokeAsync<string>("getUserId");
+            if (UserId != null) NavigationManager.NavigateTo("/home");
+
+
+            using (var db = new WebshopContext())
+            {
+                // Trigger a re-render to reflect updated data
+                StateHasChanged();
+            }
+        }
+    }
+
+    private string HashPassword(string password)
+    {
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(bytes[i].ToString("x2"));
+            }
+            return builder.ToString();
+        }
+    }
+}

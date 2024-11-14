@@ -1,0 +1,607 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\P07\\source\\repos\\Webshop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\myorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\myorders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\articledetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\articledetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\addarticle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\addarticle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\layout\\loginlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\myshoppingcart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\myshoppingcart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\orders.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\users.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\users.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\editarticle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\editarticle.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\pages\\myaddresses.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\pages\\myaddresses.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\migrations\\20241114082140_addressidaddedtoorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\migrations\\20241114082140_addressidaddedtoorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114074626_Address added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Webshop\\Migrations\\20241114074626_Address added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\webshopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\webshopcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114072753_ArticleOrder added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Webshop\\Migrations\\20241114072753_ArticleOrder added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\articleorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\articleorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\models\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\models\\article.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\services\\toastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\services\\toastservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\toast.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\layout\\navmenu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\migrations\\20241111092158_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\migrations\\20241111092158_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|c:\\users\\p07\\source\\repos\\webshop\\webshop\\migrations\\20241111135814_isdeleted(a), quantity(sc) added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E924AE53-77CF-4840-8DEB-86697BCE049D}|Webshop\\Webshop.csproj|solutionrelative:webshop\\migrations\\20241111135814_isdeleted(a), quantity(sc) added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddArticle.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\AddArticle.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\AddArticle.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\AddArticle.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\AddArticle.razor",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAADYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:48:44.725Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAUwIUAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:41:16.947Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "Webshop\\wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\wwwroot\\app.css",
+              "RelativeToolTip": "Webshop\\wwwroot\\app.css",
+              "ViewState": "AgIAAKABAAAAAAAAAAAAAKsBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-11T09:51:50.193Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\Login.razor",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEEAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:39:05.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Users.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Users.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\Users.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Users.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\Users.razor",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAHMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T11:48:16.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginLayout.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\LoginLayout.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Layout\\LoginLayout.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\LoginLayout.razor",
+              "RelativeToolTip": "Webshop\\Components\\Layout\\LoginLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:23:27.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\App.razor",
+              "RelativeToolTip": "Webshop\\Components\\App.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:30:36.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Webshop\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:24:03.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ArticleDetails.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\ArticleDetails.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\ArticleDetails.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\ArticleDetails.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\ArticleDetails.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:48:11.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyOrders.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyOrders.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\MyOrders.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyOrders.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\MyOrders.razor",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAFwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:02:07.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Register.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\Register.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Register.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\Register.razor",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAD0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:28:55.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EditArticle.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\EditArticle.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\EditArticle.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\EditArticle.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\EditArticle.razor",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAALQAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T13:26:56.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MyShoppingCart.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyShoppingCart.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\MyShoppingCart.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyShoppingCart.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\MyShoppingCart.razor",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwEgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:02:22.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MyAddresses.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyAddresses.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\MyAddresses.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\MyAddresses.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\MyAddresses.razor",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-14T07:57:40.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Orders.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Orders.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Pages\\Orders.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Pages\\Orders.razor",
+              "RelativeToolTip": "Webshop\\Components\\Pages\\Orders.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T10:02:33.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ShoppingCart.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\ShoppingCart.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\ShoppingCart.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\ShoppingCart.cs",
+              "RelativeToolTip": "Webshop\\Models\\ShoppingCart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T09:05:15.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20241114082140_AddressIdAddedToOrder.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114082140_AddressIdAddedToOrder.cs",
+              "RelativeDocumentMoniker": "Webshop\\Migrations\\20241114082140_AddressIdAddedToOrder.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114082140_AddressIdAddedToOrder.cs",
+              "RelativeToolTip": "Webshop\\Migrations\\20241114082140_AddressIdAddedToOrder.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwCwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T08:21:40.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Program.cs",
+              "RelativeDocumentMoniker": "Webshop\\Program.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Program.cs",
+              "RelativeToolTip": "Webshop\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T10:29:39.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Webshop\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB8AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:37:31.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Order.cs",
+              "RelativeToolTip": "Webshop\\Models\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T09:06:02.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Article.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Article.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\Article.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Article.cs",
+              "RelativeToolTip": "Webshop\\Models\\Article.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T08:37:42.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\User.cs",
+              "RelativeToolTip": "Webshop\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T08:31:25.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Address.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\Address.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\Address.cs",
+              "RelativeToolTip": "Webshop\\Models\\Address.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:41:09.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20241114074626_Address added.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114074626_Address added.cs",
+              "RelativeDocumentMoniker": "Webshop\\Migrations\\20241114074626_Address added.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114074626_Address added.cs",
+              "RelativeToolTip": "Webshop\\Migrations\\20241114074626_Address added.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:46:26.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20241114072753_ArticleOrder added.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114072753_ArticleOrder added.cs",
+              "RelativeDocumentMoniker": "Webshop\\Migrations\\20241114072753_ArticleOrder added.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241114072753_ArticleOrder added.cs",
+              "RelativeToolTip": "Webshop\\Migrations\\20241114072753_ArticleOrder added.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T07:27:53.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "WebshopContext.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\WebshopContext.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\WebshopContext.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\WebshopContext.cs",
+              "RelativeToolTip": "Webshop\\Models\\WebshopContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T09:08:24.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ArticleOrder.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\ArticleOrder.cs",
+              "RelativeDocumentMoniker": "Webshop\\Models\\ArticleOrder.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Models\\ArticleOrder.cs",
+              "RelativeToolTip": "Webshop\\Models\\ArticleOrder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T14:43:36.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Toast.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Toast.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Toast.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Toast.razor",
+              "RelativeToolTip": "Webshop\\Components\\Toast.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T13:45:43.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ToastService.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Services\\ToastService.cs",
+              "RelativeDocumentMoniker": "Webshop\\Services\\ToastService.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Services\\ToastService.cs",
+              "RelativeToolTip": "Webshop\\Services\\ToastService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T13:15:43.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Webshop\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\appsettings.Development.json",
+              "RelativeToolTip": "Webshop\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-13T09:11:29.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "NavMenu.razor.css",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeDocumentMoniker": "Webshop\\Components\\Layout\\NavMenu.razor.css",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeToolTip": "Webshop\\Components\\Layout\\NavMenu.razor.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-11T13:09:57.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "20241111135814_isdeleted(A), quantity(SC) added.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241111135814_isdeleted(A), quantity(SC) added.cs",
+              "RelativeDocumentMoniker": "Webshop\\Migrations\\20241111135814_isdeleted(A), quantity(SC) added.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241111135814_isdeleted(A), quantity(SC) added.cs",
+              "RelativeToolTip": "Webshop\\Migrations\\20241111135814_isdeleted(A), quantity(SC) added.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T13:58:14.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Webshop\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Components\\_Imports.razor",
+              "RelativeToolTip": "Webshop\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-11T09:25:14.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20241111092158_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241111092158_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Webshop\\Migrations\\20241111092158_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\Migrations\\20241111092158_InitialCreate.cs",
+              "RelativeToolTip": "Webshop\\Migrations\\20241111092158_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T09:21:58.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\appsettings.json",
+              "RelativeDocumentMoniker": "Webshop\\appsettings.json",
+              "ToolTip": "C:\\Users\\P07\\source\\repos\\Webshop\\Webshop\\appsettings.json",
+              "RelativeToolTip": "Webshop\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-11T07:43:41.142Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

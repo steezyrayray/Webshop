@@ -1,0 +1,118 @@
+﻿@page "/users"
+@using Webshop.Models
+@rendermode InteractiveServer
+
+<div class="users">
+    <h1 class="my">Benutzerverwaltung</h1>
+
+    <div class="my field prefix round border">
+        <i>search</i>
+        <input type="text" @bind="SearchText" placeholder="Suche..." />
+    </div>
+
+    <div class="extra-height scroll surface">
+        <table class="border">
+            <thead class="fixed">
+                <tr>
+                    <th>Benutzername</th>
+                    <th>Administrator</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (User user in FilteredUsers)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@(user.IsAdmin ? "Ja" : "Nein")</td>
+                        <td>
+                            <button @onclick="() => ToggleAdmin(user)">Administratorrechte @(user.IsAdmin ? "nehmen" : "geben")</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@code {
+    private List<User> AllUsers = new();
+    private List<User> FilteredUsers = new();
+    private string searchText = string.Empty;
+
+    public string SearchText
+    {
+        get => searchText;
+        set
+        {
+            if (searchText != value)
+            {
+                searchText = value;
+                FilterUsers();  // Automatically trigger filtering when search text changes
+            }
+        }
+    }
+
+    private int UserId;
+
+    private void RedirectToEdit(int id) => NavigationManager.NavigateTo($"/edit-user/{id}");
+
+    private async Task DeleteEntry(int id)
+    {
+        using (var db = new WebshopContext())
+        {
+            var user = db.User.Find(id);
+            if (user != null)
+            {
+                db.User.Remove(user);
+                await db.SaveChangesAsync();
+            }
+        }
+        await LoadData();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            UserId = Convert.ToInt32(await JS.InvokeAsync<string>("getUserId"));
+            await LoadData();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        using (var db = new WebshopContext())
+        {
+            //Admin-Check
+            if (!db.User.Find(UserId).IsAdmin) NavigationManager.NavigateTo("/home");
+
+            AllUsers = db.User.Where(b => b.Id != UserId).ToList();
+            FilterUsers(); // Ensure filtered list is set
+            StateHasChanged();
+        }
+    }
+
+    private void FilterUsers()
+    {
+        if (string.IsNullOrWhiteSpace(SearchText))
+        {
+            FilteredUsers = AllUsers;
+        }
+        else
+        {
+            FilteredUsers = AllUsers
+                .Where(b => b.Name.StartsWith(SearchText, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+    }
+
+    private async Task ToggleAdmin(User user)
+    {
+        using(var db = new WebshopContext())
+        {
+            user.IsAdmin = !user.IsAdmin;
+            await db.SaveChangesAsync();
+        }
+    }
+}
